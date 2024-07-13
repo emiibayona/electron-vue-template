@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Users from './components/Users.vue'
 
 window.electronAPI.sendMessage('Hello from App.vue!');
 </script>
@@ -13,7 +13,7 @@ window.electronAPI.sendMessage('Hello from App.vue!');
       <img src="/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <Users />
 </template>
 
 <style scoped>
