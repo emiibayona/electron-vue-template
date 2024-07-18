@@ -22,7 +22,7 @@ function createWindow() {
 
 function startBackendServer() {
   const { exec } = require("child_process");
-  exec("cd backend && npm start", (err, stdout, stderr) => {
+  exec("cd src/backend && npm start", (err, stdout, stderr) => {
     if (err) {
       console.error(`Error starting backend server: ${stderr}`);
     } else {

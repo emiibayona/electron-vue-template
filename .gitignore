@@ -1,6 +1,7 @@
 node_modules
 dist
 build
-
+src/backend/node_modules
+src/backend/*.txt
 .vscode
 .idea

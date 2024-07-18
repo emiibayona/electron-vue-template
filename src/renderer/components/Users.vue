@@ -9,27 +9,27 @@
   </div>
 </template>
 
-<script >
-import api from '../services/api'
+<script>
+import api from "../services/api";
 
 export default {
   data() {
     return {
       users: [],
       newUser: {
-        name: ''
-      }
+        name: "",
+      },
     };
   },
   async created() {
-    this.users = await api.getUsers().then(response => response.data);
+    this.users = await api.getUsers().then((response) => response.data);
   },
   methods: {
     async addUser() {
       const user = await api.createUser(this.newUser);
       this.users.push(user.data);
-      this.newUser.name = '';
-    }
-  }
+      this.newUser.name = "";
+    },
+  },
 };
 </script>
