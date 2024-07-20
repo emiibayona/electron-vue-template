@@ -1,44 +1,45 @@
-// backend/index.js
-const express = require('express')
-const { Sequelize, DataTypes } = require('sequelize')
-const path = require('path')
-const cors = require('cors')
+const express = require("express");
+const cors = require("cors");
+const { sequelize } = require("./config/database");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
+const fs = require("fs");
 
-const app = express()
-app.use(cors())
-const port = 8081
+const app = express();
+const port = 8081;
 
-// Configuración de Sequelize
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: path.join(__dirname, 'database.sqlite')
-})
+sequelize.sync();
 
-// Modelo de ejemplo
-const User = sequelize.define('User', {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
+function getRoutes() {
+  fs?.readdirSync("./routes/")?.forEach((route) => {
+    require(`./routes/${route.split(".")[0]}`)(app);
+  });
+}
+
+function getUses() {
+  app.use(morgan("combined"));
+  app.use(cors());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
+}
+
+const initApp = async () => {
+  console.log("Testing the database connection..");
+
+  // Test the connection.
+  try {
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+
+    getUses();
+    getRoutes();
+
+    app.listen(port, () => {
+      console.log(`Server is running at: http://localhost:${port}`);
+    });
+  } catch (error) {
+    console.error("Unable to connect to the database:", error.original);
   }
-})
+};
 
-// Sincronizar la base de datos
-sequelize.sync()
-
-// Middleware para parsear JSON
-app.use(express.json())
-
-// Ruta de ejemplo
-app.get('/api/users', async (req, res) => {
-  const users = await User.findAll()
-  res.json(users)
-})
-
-app.post('/api/users', async (req, res) => {
-  const user = await User.create(req.body)
-  res.json(user)
-})
-
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`)
-})
+initApp();
