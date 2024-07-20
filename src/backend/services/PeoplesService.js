@@ -7,7 +7,6 @@ const service = {};
 
 service.create = withTryCatch(
   async function (data) {
-    console.log("datitaa", data);
     return ResultOk(await People.create(data));
   },
   { error: "Error while creating a new people" }

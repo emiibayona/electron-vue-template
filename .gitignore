@@ -3,5 +3,6 @@ dist
 build
 src/backend/node_modules
 src/backend/*.txt
+src/backend/config/database.sqlite
 .vscode
 .idea
