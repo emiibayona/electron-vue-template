@@ -1,3 +1,5 @@
+const { DUE_STATUS } = require("../utils/constants");
+
 module.exports = (sequelize, DataTypes) => {
   const Due = sequelize.define(
     "Due",
@@ -9,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
       description: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      status: {
+        type: DataTypes.ENUM,
+        values: Object.values(DUE_STATUS),
+        defaultValue: DUE_STATUS.PENDING,
       },
       payPlanId: {
         type: DataTypes.INTEGER,

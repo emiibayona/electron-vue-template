@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      payentMethod: {
+      paymentMethod: {
         type: DataTypes.ENUM,
         values: Object.values(PAYMENT_METHOD),
         allowNull: false,
@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.ENUM,
         values: Object.values(PAYMENT_TYPE),
         allowNull: false,
+      },
+      invoice: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       centerId: {
         type: DataTypes.INTEGER,
@@ -52,11 +56,10 @@ module.exports = (sequelize, DataTypes) => {
           model: "Dues",
           key: "id",
         },
-        allowNull: true,
+        allowNull: false,
       },
     },
     { paranoid: false, timestamps: true }
   );
-
   return Payment;
 };

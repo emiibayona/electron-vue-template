@@ -1,6 +1,5 @@
 const { handleResponse } = require("../services/HandleResponse");
-const service = require("../services/PeoplesService");
-
+const service = require("../services/AddressService");
 const controller = {};
 
 controller.create = async (req, res) => {
@@ -17,19 +16,14 @@ controller.getById = async (req, res) => {
   return handleResponse(people, res);
 };
 
-controller.update = async (req, res) => {
-  const people = await service.update(req.params.id, req.body);
-  return handleResponse(people, res);
-};
+// controller.update = async (req, res) => {
+//   const people = await service.update(req.params.id, req.body);
+//   return handleResponse(people, res);
+// };
 
-controller.delete = async (req, res) => {
-  const people = await service.delete(req.params.id);
-  return handleResponse(people, res);
-};
-
-controller.deleteByDni = async (req, res) => {
-  const people = await service.deleteByDni(req.params.dni);
-  return handleResponse(people, res);
-};
+// controller.delete = async (req, res) => {
+//   const people = await service.delete(req.params.id);
+//   return handleResponse(people, res);
+// };
 
 module.exports = controller;

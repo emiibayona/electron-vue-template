@@ -11,7 +11,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       description: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
+      },
+      phoneNumber: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       status: {
         type: DataTypes.ENUM,

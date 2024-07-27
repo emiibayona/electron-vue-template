@@ -2,11 +2,6 @@ module.exports = (sequelize, DataTypes) => {
   const PayPlan = sequelize.define(
     "PayPlan",
     {
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
       dues: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -16,9 +11,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       startDate: { type: DataTypes.DATE, allowNull: false },
-      endDate: { type: DataTypes.DATE, allowNull: false },
-      frequency: { type: DataTypes.INTEGER, allowNull: false },
-      description: { type: DataTypes.STRING, allowNull: false },
+      frequency: { type: DataTypes.INTEGER, allowNull: true },
+      description: { type: DataTypes.STRING, allowNull: true },
       centerId: {
         type: DataTypes.INTEGER,
         references: {

@@ -12,7 +12,12 @@ const sequelize = new Sequelize({
   operatorsAliases: false,
 });
 
-const db = { Sequelize, sequelize, DataTypes };
+const db = {
+  Sequelize,
+  sequelize,
+  DataTypes,
+  Op: Sequelize.Op,
+};
 
 fs?.readdirSync("./models/")?.forEach((file) => {
   if (!file.startsWith(".") && file.endsWith(".js") && db) {

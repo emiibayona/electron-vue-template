@@ -4,5 +4,7 @@ build
 src/backend/node_modules
 src/backend/*.txt
 src/backend/config/database.sqlite
+src/backend/files
+src/backend/uploads
 .vscode
 .idea

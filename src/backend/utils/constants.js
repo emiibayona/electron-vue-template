@@ -22,4 +22,15 @@ const PEOPLE_TYPE = {
   OTHER: "OTHER",
 };
 
-module.exports = { PAYMENT_METHOD, PAYMENT_TYPE, STATUS, PEOPLE_TYPE };
+const DUE_STATUS = {
+  PAID: "PAID",
+  PENDING: "PENDING",
+};
+
+module.exports = {
+  PAYMENT_METHOD,
+  PAYMENT_TYPE,
+  STATUS,
+  DUE_STATUS,
+  PEOPLE_TYPE,
+};
